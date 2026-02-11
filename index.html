@@ -28,27 +28,35 @@ html, body {
   height: 170vh;
 
   display: grid;
-  grid-template-columns: repeat(6, 1fr); /* 6 per row */
-  grid-template-rows: repeat(5, auto);   /* 5 rows */
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(5, auto);
 
   gap: 60px;
   padding: 100px;
+
   transform-origin: 0 0;
   cursor: grab;
 }
 
+/* POLAROID FRAME */
 .polaroid {
-  background: #f9f9f7;
-  padding: 10px 10px 25px;
+  background: #f8f8f6;
+
+  /* thinner borders */
+  padding: 8px 8px 20px;
+
   box-shadow:
-    0 10px 25px rgba(0,0,0,0.4),
+    0 12px 30px rgba(0,0,0,0.45),
     inset 0 0 2px rgba(0,0,0,0.2);
 }
 
+/* IMAGE — TAKES MOST SPACE */
 .polaroid img {
   width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
   display: block;
-  filter: contrast(0.95) sepia(0.08);
+  filter: contrast(0.97) sepia(0.05);
 }
 </style>
 </head>
@@ -60,7 +68,7 @@ html, body {
 
 <script>
 for (let i = 1; i <= 30; i++) {
-  const tilt = (Math.random() * 8 - 4).toFixed(2); // slight tilt
+  const tilt = (Math.random() * 6 - 3).toFixed(2); // more subtle tilt
   document.write(`
     <div class="polaroid" style="transform: rotate(${tilt}deg);">
       <img src="${i}.JPG">
@@ -112,7 +120,7 @@ window.addEventListener("pointerup", () => {
   canvas.style.cursor = "grab";
 });
 
-/* Scroll Zoom (Desktop) */
+/* Scroll Zoom */
 window.addEventListener("wheel", e => {
   e.preventDefault();
   const zoomAmount = -e.deltaY * 0.001;
@@ -120,7 +128,7 @@ window.addEventListener("wheel", e => {
   updateTransform();
 }, { passive: false });
 
-/* Pinch Zoom (Mobile) */
+/* Pinch Zoom */
 let lastDistance = null;
 
 window.addEventListener("touchmove", e => {
@@ -142,7 +150,7 @@ window.addEventListener("touchend", () => {
   lastDistance = null;
 });
 
-/* Music auto-play assist */
+/* Music autoplay assist */
 const music = document.getElementById("bgm");
 window.addEventListener("pointerdown", () => {
   if (music.paused) music.play();
