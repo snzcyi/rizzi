@@ -2,149 +2,147 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>Memories</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Polaroids</title>
 
 <style>
 html, body {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background: #000;
+  height: 100%;
+  background: url('bg.jpg') center/cover no-repeat fixed;
   touch-action: none;
+}
+
+#viewport {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
 }
 
 #canvas {
   position: absolute;
-  width: 260vw;
-  height: 260vh;
+  width: 200vw;
+  height: 170vh;
+
+  display: grid;
+  grid-template-columns: repeat(6, 1fr); /* 6 per row */
+  grid-template-rows: repeat(5, auto);   /* 5 rows */
+
+  gap: 60px;
+  padding: 100px;
+  transform-origin: 0 0;
   cursor: grab;
 }
 
 .polaroid {
-  position: absolute;
-  width: 160px;
-  background: #fafafa;
-  padding: 10px 10px 26px;
+  background: #f9f9f7;
+  padding: 10px 10px 25px;
   box-shadow:
-    0 10px 25px rgba(0,0,0,0.35),
+    0 10px 25px rgba(0,0,0,0.4),
     inset 0 0 2px rgba(0,0,0,0.2);
-  overflow: hidden;
 }
 
 .polaroid img {
   width: 100%;
   display: block;
-  filter: contrast(0.95) sepia(0.12);
-}
-
-.polaroid::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(circle at top left, rgba(0,0,0,0.08), transparent 60%),
-    radial-gradient(circle at bottom right, rgba(255,255,255,0.25), transparent 55%);
-  pointer-events: none;
-}
-
-.polaroid::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    120deg,
-    rgba(255,255,255,0.35),
-    rgba(255,255,255,0.05) 30%,
-    transparent 60%
-  );
-  opacity: 0.35;
-  pointer-events: none;
-}
-
-@media (max-width: 768px) {
-  .polaroid {
-    width: 125px;
-    padding: 8px 8px 22px;
-  }
+  filter: contrast(0.95) sepia(0.08);
 }
 </style>
 </head>
 
 <body>
 
+<div id="viewport">
 <div id="canvas">
 
-<div class="polaroid" style="left:5vw; top:5vh; transform:rotate(-6deg);"><img src="1.JPG"></div>
-<div class="polaroid" style="left:20vw; top:8vh; transform:rotate(4deg);"><img src="2.JPG"></div>
-<div class="polaroid" style="left:35vw; top:6vh; transform:rotate(-3deg);"><img src="3.JPG"></div>
-<div class="polaroid" style="left:50vw; top:10vh; transform:rotate(6deg);"><img src="4.JPG"></div>
-<div class="polaroid" style="left:65vw; top:7vh; transform:rotate(-5deg);"><img src="5.JPG"></div>
-<div class="polaroid" style="left:80vw; top:12vh; transform:rotate(3deg);"><img src="6.JPG"></div>
-
-<div class="polaroid" style="left:10vw; top:25vh; transform:rotate(5deg);"><img src="7.JPG"></div>
-<div class="polaroid" style="left:28vw; top:28vh; transform:rotate(-4deg);"><img src="8.JPG"></div>
-<div class="polaroid" style="left:45vw; top:26vh; transform:rotate(2deg);"><img src="9.JPG"></div>
-<div class="polaroid" style="left:62vw; top:30vh; transform:rotate(-6deg);"><img src="10.JPG"></div>
-<div class="polaroid" style="left:78vw; top:28vh; transform:rotate(4deg);"><img src="11.JPG"></div>
-
-<div class="polaroid" style="left:6vw; top:48vh; transform:rotate(-2deg);"><img src="12.JPG"></div>
-<div class="polaroid" style="left:22vw; top:50vh; transform:rotate(6deg);"><img src="13.JPG"></div>
-<div class="polaroid" style="left:38vw; top:52vh; transform:rotate(-5deg);"><img src="14.JPG"></div>
-<div class="polaroid" style="left:55vw; top:50vh; transform:rotate(3deg);"><img src="15.JPG"></div>
-<div class="polaroid" style="left:72vw; top:53vh; transform:rotate(-4deg);"><img src="16.JPG"></div>
-
-<div class="polaroid" style="left:12vw; top:70vh; transform:rotate(4deg);"><img src="17.JPG"></div>
-<div class="polaroid" style="left:30vw; top:72vh; transform:rotate(-6deg);"><img src="18.JPG"></div>
-<div class="polaroid" style="left:46vw; top:74vh; transform:rotate(5deg);"><img src="19.JPG"></div>
-<div class="polaroid" style="left:64vw; top:72vh; transform:rotate(-3deg);"><img src="20.JPG"></div>
-<div class="polaroid" style="left:80vw; top:75vh; transform:rotate(6deg);"><img src="21.JPG"></div>
-
-<div class="polaroid" style="left:18vw; top:40vh; transform:rotate(9deg);"><img src="22.JPG"></div>
-<div class="polaroid" style="left:52vw; top:18vh; transform:rotate(-9deg);"><img src="23.JPG"></div>
-<div class="polaroid" style="left:70vw; top:42vh; transform:rotate(8deg);"><img src="24.JPG"></div>
-
-<div class="polaroid" style="left:25vw; top:90vh; transform:rotate(-7deg);"><img src="25.JPG"></div>
-<div class="polaroid" style="left:45vw; top:92vh; transform:rotate(6deg);"><img src="26.JPG"></div>
-<div class="polaroid" style="left:65vw; top:90vh; transform:rotate(-4deg);"><img src="27.JPG"></div>
-
-<div class="polaroid" style="left:5vw; top:88vh; transform:rotate(5deg);"><img src="28.JPG"></div>
-<div class="polaroid" style="left:82vw; top:88vh; transform:rotate(-6deg);"><img src="29.JPG"></div>
-<div class="polaroid" style="left:55vw; top:104vh; transform:rotate(3deg);"><img src="30.JPG"></div>
+<script>
+for (let i = 1; i <= 30; i++) {
+  const tilt = (Math.random() * 8 - 4).toFixed(2); // slight tilt
+  document.write(`
+    <div class="polaroid" style="transform: rotate(${tilt}deg);">
+      <img src="${i}.JPG">
+    </div>
+  `);
+}
+</script>
 
 </div>
+</div>
 
-<audio id="bgm" src="paris.mp3" loop autoplay></audio>
+<audio id="bgm" src="paris.mp3" autoplay loop></audio>
 
 <script>
-let dragging = false;
-let startX, startY;
-let offsetX = -window.innerWidth * 0.4;
-let offsetY = -window.innerHeight * 0.4;
-
 const canvas = document.getElementById("canvas");
-canvas.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
 
+let scale = 1;
+let minScale = 0.6;
+let maxScale = 2.5;
+let offsetX = -window.innerWidth * 0.25;
+let offsetY = -window.innerHeight * 0.2;
+
+let isDragging = false;
+let startX, startY;
+
+function updateTransform() {
+  canvas.style.transform =
+    `translate(${offsetX}px, ${offsetY}px) scale(${scale})`;
+}
+updateTransform();
+
+/* Drag */
 canvas.addEventListener("pointerdown", e => {
-  dragging = true;
-  canvas.style.cursor = "grabbing";
+  isDragging = true;
   startX = e.clientX - offsetX;
   startY = e.clientY - offsetY;
+  canvas.style.cursor = "grabbing";
 });
 
 window.addEventListener("pointermove", e => {
-  if (!dragging) return;
+  if (!isDragging) return;
   offsetX = e.clientX - startX;
   offsetY = e.clientY - startY;
-  canvas.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+  updateTransform();
 });
 
 window.addEventListener("pointerup", () => {
-  dragging = false;
+  isDragging = false;
   canvas.style.cursor = "grab";
 });
 
-/* mobile autoplay unlock */
+/* Scroll Zoom (Desktop) */
+window.addEventListener("wheel", e => {
+  e.preventDefault();
+  const zoomAmount = -e.deltaY * 0.001;
+  scale = Math.min(maxScale, Math.max(minScale, scale + zoomAmount));
+  updateTransform();
+}, { passive: false });
+
+/* Pinch Zoom (Mobile) */
+let lastDistance = null;
+
+window.addEventListener("touchmove", e => {
+  if (e.touches.length === 2) {
+    const dx = e.touches[0].clientX - e.touches[1].clientX;
+    const dy = e.touches[0].clientY - e.touches[1].clientY;
+    const distance = Math.sqrt(dx*dx + dy*dy);
+
+    if (lastDistance) {
+      const zoomAmount = (distance - lastDistance) * 0.005;
+      scale = Math.min(maxScale, Math.max(minScale, scale + zoomAmount));
+      updateTransform();
+    }
+    lastDistance = distance;
+  }
+}, { passive: false });
+
+window.addEventListener("touchend", () => {
+  lastDistance = null;
+});
+
+/* Music auto-play assist */
 const music = document.getElementById("bgm");
 window.addEventListener("pointerdown", () => {
   if (music.paused) music.play();
